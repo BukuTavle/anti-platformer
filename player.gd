@@ -2,11 +2,9 @@ extends CharacterBody2D
 
 var screen_size: Vector2 = Vector2.ZERO
 var is_rolling: bool
-var health: int = 3
 const SPEED: float = 150.0
 const JUMP_VELOCITY: float = -250.0
 const ROLL_VELOCITY: float = 250.0
-signal dead
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -62,9 +60,3 @@ func _on_roll_timer_timeout() -> void:
 	$NormalHitbox.disabled = false
 	is_rolling = false
 	
-
-
-func _on_green_slime_damage_player() -> void:
-	health -= 1
-	if health <= 0:
-		dead.emit()

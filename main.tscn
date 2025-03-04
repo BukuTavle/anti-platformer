@@ -14,3 +14,6 @@ position = Vector2(0, 96)
 limit_left = 0
 
 [node name="HUD" parent="." instance=ExtResource("7_wimqa")]
+
+[connection signal="player_damaged" from="." to="HUD" method="_on_main_player_damaged"]
+[connection signal="player_dead" from="." to="HUD" method="_on_main_player_dead"]

@@ -49,7 +49,8 @@ func _on_death_timer_timeout() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if !$"../../Main/Player".is_rolling:
 		damage_player.emit()
-		print("dead")
+		#print("dead")
+		
 	elif $"../../Main/Player".is_rolling:
 		$Area2D/CollisionShape2D.set_deferred("disabled", true)
 		$DeathTimer.start()

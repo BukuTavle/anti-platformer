@@ -180,3 +180,5 @@ position = Vector2(16, -80)
 position = Vector2(217, 102)
 
 [node name="Main" parent="." instance=ExtResource("1_p5g2u")]
+
+[connection signal="damage_player" from="Enemies/GreenSlime" to="Main" method="_on_green_slime_damage_player"]

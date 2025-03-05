@@ -10,7 +10,7 @@ func show_game_over() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Health/AnimationPlayer.play("full_health")
-	push_error("Common parent er null eller noe sånt. Lag også animasjoner for alle healthene. ikke bare blink når du mister det siste. Kanskje gjør noe ekst")
+	#push_error("Common parent er null eller noe sånt. Lag også animasjoner for alle healthene. ikke bare blink når du mister det siste. Kanskje gjør noe ekst")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

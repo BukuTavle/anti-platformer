@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://cjosroabkspkm" path="res://assets/sprites/fruit.png" id="1_n55fv"]
 [ext_resource type="FontFile" uid="uid://8tcoe0d50pqi" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_tfe74"]
 
-[sub_resource type="Animation" id="Animation_r2dc4"]
+[sub_resource type="Animation" id="Animation_8sq4i"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D3:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [4]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -28,7 +28,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_47gpq"]
@@ -113,7 +125,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7c8kd"]
 resource_name = "one_health"
-length = 0.001
+length = 0.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -121,10 +133,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [12]
+"values": [4, 12]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -133,10 +145,10 @@ tracks/1/path = NodePath("Sprite2D2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [3]
+"values": [3, 4, 3, 4, 3, 4, 3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -153,7 +165,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_y4qv7"]
 resource_name = "two_health"
-length = 0.001
+length = 0.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -161,10 +173,10 @@ tracks/0/path = NodePath("Sprite2D3:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [3]
+"values": [3, 0, 3, 0, 3, 0, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -173,10 +185,10 @@ tracks/1/path = NodePath("Sprite2D2:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [4]
+"values": [0, 4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -185,15 +197,15 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [4]
+"values": [0, 4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kluv3"]
 _data = {
-&"RESET": SubResource("Animation_r2dc4"),
+&"RESET": SubResource("Animation_8sq4i"),
 &"dead": SubResource("Animation_47gpq"),
 &"full_health": SubResource("Animation_vnr2c"),
 &"one_health": SubResource("Animation_7c8kd"),
@@ -214,20 +226,19 @@ position = Vector2(8, 8)
 texture = ExtResource("1_n55fv")
 hframes = 4
 vframes = 4
-frame = 8
 
 [node name="Sprite2D2" type="Sprite2D" parent="Health"]
 position = Vector2(24, 8)
 texture = ExtResource("1_n55fv")
 hframes = 4
 vframes = 4
-frame = 8
 
 [node name="Sprite2D3" type="Sprite2D" parent="Health"]
 position = Vector2(40, 8)
 texture = ExtResource("1_n55fv")
 hframes = 4
 vframes = 4
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Health"]
 libraries = {

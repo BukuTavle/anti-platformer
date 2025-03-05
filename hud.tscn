@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b5pdc7byx8k1r"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_jukh5"]
+[ext_resource type="Script" uid="uid://bev4t3d4ahrwr" path="res://hud.gd" id="1_jukh5"]
 [ext_resource type="Texture2D" uid="uid://cjosroabkspkm" path="res://assets/sprites/fruit.png" id="1_n55fv"]
 [ext_resource type="FontFile" uid="uid://8tcoe0d50pqi" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_tfe74"]
 
@@ -193,11 +193,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kluv3"]
 _data = {
-"RESET": SubResource("Animation_r2dc4"),
-"dead": SubResource("Animation_47gpq"),
-"full_health": SubResource("Animation_vnr2c"),
-"one_health": SubResource("Animation_7c8kd"),
-"two_health": SubResource("Animation_y4qv7")
+&"RESET": SubResource("Animation_r2dc4"),
+&"dead": SubResource("Animation_47gpq"),
+&"full_health": SubResource("Animation_vnr2c"),
+&"one_health": SubResource("Animation_7c8kd"),
+&"two_health": SubResource("Animation_y4qv7")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_oq5qf"]
@@ -231,7 +231,7 @@ vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Health"]
 libraries = {
-"": SubResource("AnimationLibrary_kluv3")
+&"": SubResource("AnimationLibrary_kluv3")
 }
 
 [node name="Message" type="Label" parent="."]

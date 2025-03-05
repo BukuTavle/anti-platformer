@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bm5bxs6reomvr"]
 
-[ext_resource type="Script" path="res://green_slime.gd" id="1_cjmfb"]
+[ext_resource type="Script" uid="uid://bxfwk3oih8ytg" path="res://green_slime.gd" id="1_cjmfb"]
 [ext_resource type="Texture2D" uid="uid://cjitrst5xvb1e" path="res://assets/sprites/slime_green.png" id="1_kexsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ju8uk"]
@@ -88,11 +88,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kufbd"]
 _data = {
-"RESET": SubResource("Animation_ssh2p"),
-"damaged": SubResource("Animation_kusmx"),
-"death": SubResource("Animation_fh4gi"),
-"spawn": SubResource("Animation_ll4u4"),
-"walk": SubResource("Animation_d25cb")
+&"RESET": SubResource("Animation_ssh2p"),
+&"damaged": SubResource("Animation_kusmx"),
+&"death": SubResource("Animation_fh4gi"),
+&"spawn": SubResource("Animation_ll4u4"),
+&"walk": SubResource("Animation_d25cb")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d1ju"]
@@ -115,7 +115,7 @@ vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kufbd")
+&"": SubResource("AnimationLibrary_kufbd")
 }
 
 [node name="DeathTimer" type="Timer" parent="."]

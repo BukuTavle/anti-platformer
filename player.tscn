@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://beonflmqtctni"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_41uvr"]
+[ext_resource type="Script" uid="uid://c4m1w55d4epcw" path="res://player.gd" id="1_41uvr"]
 [ext_resource type="Texture2D" uid="uid://bbdl6wjhv3o5a" path="res://assets/sprites/knight.png" id="2_a5deb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2ui5"]
@@ -73,10 +73,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5dm4q"]
 _data = {
-"RESET": SubResource("Animation_2yv0k"),
-"idle": SubResource("Animation_awrrq"),
-"roll": SubResource("Animation_ih74l"),
-"walk": SubResource("Animation_btl3k")
+&"RESET": SubResource("Animation_2yv0k"),
+&"idle": SubResource("Animation_awrrq"),
+&"roll": SubResource("Animation_ih74l"),
+&"walk": SubResource("Animation_btl3k")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi6m1"]
@@ -98,7 +98,7 @@ vframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5dm4q")
+&"": SubResource("AnimationLibrary_5dm4q")
 }
 
 [node name="RollTimer" type="Timer" parent="."]

@@ -5,6 +5,7 @@ signal player_damaged
 signal player_dead
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	DisplayServer.window_set_size(Vector2i(1440, 1080)) #Project settings -> display -> window -> window mode -> maximised
 	pass
 
 func start_game(level) -> void:
@@ -25,7 +26,8 @@ func _process(delta: float) -> void:
 	
 func _on_green_slime_damage_player() -> void:
 	#print("dead")
-	player_health -= 1
-	player_damaged.emit()
-	if player_health <= 0:
-		player_dead.emit()
+	if not player_health <= 0:
+		player_health -= 1
+		player_damaged.emit()
+		if player_health <= 0:
+			player_dead.emit()

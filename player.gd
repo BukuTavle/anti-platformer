@@ -52,6 +52,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = ROLL_VELOCITY
 	
+	
+	
 	move_and_slide()
 
 
@@ -60,3 +62,8 @@ func _on_roll_timer_timeout() -> void:
 	$NormalHitbox.disabled = false
 	is_rolling = false
 	
+
+
+func _on_player_damaged() -> void:
+	$AnimationPlayer.play("damaged")
+	$DamageTimer.start()

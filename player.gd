@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 var screen_size: Vector2 = Vector2.ZERO
-var is_rolling: bool
+var is_rolling: bool = false
+var is_damaged: bool = false
 const SPEED: float = 150.0
 const JUMP_VELOCITY: float = -250.0
 const ROLL_VELOCITY: float = 250.0
@@ -18,24 +19,24 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !is_damaged:
 		velocity.y = JUMP_VELOCITY
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
+	if direction and !is_damaged:
 		velocity.x = direction * SPEED
-	else:
+	elif !is_damaged:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	if velocity.x < 0 and $AnimationPlayer.current_animation != "roll":
+	if velocity.x < 0 and $AnimationPlayer.current_animation != "roll" and !is_damaged:
 		$AnimationPlayer.play("walk")
 		$Sprite2D.flip_h = true
-	elif velocity.x > 0 and $AnimationPlayer.current_animation != "roll":
+	elif velocity.x > 0 and $AnimationPlayer.current_animation != "roll" and !is_damaged:
 		$AnimationPlayer.play("walk")
 		$Sprite2D.flip_h = false
-	elif $AnimationPlayer.current_animation != "roll":
+	elif $AnimationPlayer.current_animation != "roll" and !is_damaged:
 		$AnimationPlayer.play("idle")
 	
 	#Handle rolling
@@ -67,3 +68,13 @@ func _on_roll_timer_timeout() -> void:
 func _on_player_damaged() -> void:
 	$AnimationPlayer.play("damaged")
 	$DamageTimer.start()
+	is_damaged = true
+	$RollTimer.stop()
+
+
+func _on_damage_timer_timeout() -> void:
+	is_damaged = false
+
+
+func _on_player_dead() -> void:
+	$AnimationPlayer.play("dead")

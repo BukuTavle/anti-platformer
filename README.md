@@ -1,4 +1,6 @@
 How to play the unfinished game:
+
+
 Go to the root directory and click on code. In the menu there, click on download project zip
 ![image](https://github.com/user-attachments/assets/1d1c1751-4afd-4471-919e-0a414c295439)
 

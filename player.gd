@@ -3,6 +3,8 @@ extends CharacterBody2D
 var screen_size: Vector2 = Vector2.ZERO
 var is_rolling: bool = false
 var is_damaged: bool = false
+var dead: bool = false
+#var dead_body: RigidBody2D
 const SPEED: float = 150.0
 const JUMP_VELOCITY: float = -250.0
 const ROLL_VELOCITY: float = 250.0
@@ -12,11 +14,16 @@ func _ready() -> void:
 	$NormalHitbox.disabled = false
 	$RollingHitbox.disabled = true
 	position = $"../../PlayerSpawnPoint".position
+	#dead_body = $"..".get_node("DeadPlayerBody")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+		
+	if dead: 
+		return
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor() and !is_damaged:
@@ -77,4 +84,8 @@ func _on_damage_timer_timeout() -> void:
 
 
 func _on_player_dead() -> void:
+	
 	$AnimationPlayer.play("dead")
+	dead = true
+	#$"..".add_child(dead_body)
+	

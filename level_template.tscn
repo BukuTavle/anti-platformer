@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=4 uid="uid://g7igmnwv3osk"]
+
+[ext_resource type="PackedScene" uid="uid://cwgntm41t14ve" path="res://background_overworld.tscn" id="1_a617u"]
+[ext_resource type="PackedScene" uid="uid://f4jmja83qih7" path="res://map_template.tscn" id="2_0eplr"]
+[ext_resource type="PackedScene" uid="uid://cm6hs5qpy558b" path="res://coin.tscn" id="3_gll4f"]
+[ext_resource type="PackedScene" uid="uid://bm5bxs6reomvr" path="res://green_slime.tscn" id="4_eq15t"]
+[ext_resource type="PackedScene" uid="uid://d4ke50jvhp3jf" path="res://player_spawn_point.tscn" id="5_aragq"]
+[ext_resource type="PackedScene" uid="uid://bjrvp7ok1x5se" path="res://main.tscn" id="6_5h5s4"]
+
+[node name="LevelTemplate" type="Node2D"]
+
+[node name="BackgroundOverworld" parent="." instance=ExtResource("1_a617u")]
+
+[node name="MapTemplate" parent="." instance=ExtResource("2_0eplr")]
+tile_map_data = PackedByteArray("AAAAAAgAAAAAAAEAAAABAAgAAAAAAAEAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAIAAgAAAAAAAEAAAAJAAgAAAAAAAEAAAAJAAcAAAAAAAEAAAA=")
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("3_gll4f")]
+position = Vector2(45, 119)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="GreenSlime" parent="Enemies" instance=ExtResource("4_eq15t")]
+position = Vector2(128, 119)
+
+[node name="PlayerSpawnPoint" parent="." instance=ExtResource("5_aragq")]
+position = Vector2(16, -85)
+
+[node name="Main" parent="." instance=ExtResource("6_5h5s4")]
+
+[connection signal="damage_player" from="Enemies/GreenSlime" to="Main" method="_on_green_slime_damage_player"]

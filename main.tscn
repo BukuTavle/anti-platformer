@@ -19,3 +19,4 @@ limit_left = 0
 [connection signal="player_damaged" from="." to="HUD" method="_on_main_player_damaged"]
 [connection signal="player_dead" from="." to="Player" method="_on_player_dead"]
 [connection signal="player_dead" from="." to="HUD" method="_on_main_player_dead"]
+[connection signal="game_restarted" from="HUD" to="Player" method="start_game"]

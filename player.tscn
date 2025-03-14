@@ -39,6 +39,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 resource_name = "dead"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -142,8 +143,12 @@ position = Vector2(-1, 8)
 shape = SubResource("RectangleShape2D_mi6m1")
 
 [node name="DamageTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.6
 one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.4
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

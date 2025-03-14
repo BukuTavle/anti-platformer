@@ -1,11 +1,17 @@
 extends CanvasLayer
 
+signal game_restarted
+
 func show_message(text) -> void:
 	$Message.text = text
 	$Message.show()
 	
 func show_game_over() -> void:
 	show_message("Game Over")
+	
+func restart_game() -> void:
+	game_restarted.emit()
+	$Message.hide()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +26,7 @@ func _process(delta: float) -> void:
 
 func _on_main_player_dead() -> void:
 	$Health/AnimationPlayer.play("dead")
+	show_game_over()
 
 
 func _on_main_player_damaged() -> void:
@@ -30,3 +37,8 @@ func _on_main_player_damaged() -> void:
 		$Health/AnimationPlayer.play("two_health")
 	elif $"..".player_health == 1:
 		$Health/AnimationPlayer.play("one_health")
+
+
+func _on_restart_button_pressed() -> void:
+	
+	restart_game()

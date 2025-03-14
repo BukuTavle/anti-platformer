@@ -14,7 +14,7 @@ func damage_player() -> void:
 func _ready() -> void:
 	DisplayServer.window_set_size(Vector2i(1440, 1080)) #Project settings -> display -> window -> window mode -> maximised if not embedded
 
-func start_game(level) -> void:
+func start_game(level: int) -> void:
 	pass
 
 func game_over() -> void:

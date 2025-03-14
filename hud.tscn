@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5pdc7byx8k1r"]
+[gd_scene load_steps=14 format=3 uid="uid://b5pdc7byx8k1r"]
 
 [ext_resource type="Script" uid="uid://bev4t3d4ahrwr" path="res://hud.gd" id="1_jukh5"]
 [ext_resource type="Texture2D" uid="uid://cjosroabkspkm" path="res://assets/sprites/fruit.png" id="1_n55fv"]
 [ext_resource type="FontFile" uid="uid://8tcoe0d50pqi" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_tfe74"]
+[ext_resource type="Texture2D" uid="uid://py3lg20s26ie" path="res://assets/button_ui/restart_button_red.png" id="4_1xsix"]
+[ext_resource type="Texture2D" uid="uid://wahilce81k2v" path="res://assets/button_ui/restart_button_purple_pressed.png" id="5_1xsix"]
+[ext_resource type="Texture2D" uid="uid://dm2ejw66btj11" path="res://assets/button_ui/restart_button_pink.png" id="6_rftc2"]
 
 [sub_resource type="Animation" id="Animation_8sq4i"]
 length = 0.001
@@ -262,3 +265,13 @@ text = "Game Over"
 label_settings = SubResource("LabelSettings_oq5qf")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="."]
+offset_left = 240.0
+offset_right = 256.0
+offset_bottom = 16.0
+texture_normal = ExtResource("4_1xsix")
+texture_pressed = ExtResource("5_1xsix")
+texture_hover = ExtResource("6_rftc2")
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

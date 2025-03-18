@@ -10,6 +10,7 @@ func show_game_over() -> void:
 	show_message("Game Over")
 	
 func restart_game() -> void:
+	$Health/AnimationPlayer.play("full_health")
 	game_restarted.emit()
 	$Message.hide()
 	
@@ -26,7 +27,6 @@ func _process(delta: float) -> void:
 
 func _on_main_player_dead() -> void:
 	$Health/AnimationPlayer.play("dead")
-	show_game_over()
 
 
 func _on_main_player_damaged() -> void:

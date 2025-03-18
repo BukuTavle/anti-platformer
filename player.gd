@@ -8,9 +8,9 @@ var dead: bool = false
 const SPEED: float = 150.0
 const JUMP_VELOCITY: float = -250.0
 const ROLL_VELOCITY: float = 250.0
+signal died
 
 func start_game():
-	position = $"../../PlayerSpawnPoint".position
 	$NormalHitbox.disabled = false
 	$RollingHitbox.disabled = true #probably not needed, but just in case, you know
 
@@ -27,8 +27,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		
 		
-	if dead: 
-		await start_game()
+
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor() and !is_damaged:
@@ -68,6 +67,9 @@ func _physics_process(delta: float) -> void:
 	
 	
 	move_and_slide()
+	
+	if dead: 
+		await start_game()
 
 
 func _on_roll_timer_timeout() -> void:
@@ -99,3 +101,4 @@ func _on_player_dead() -> void:
 func _on_death_timer_timeout() -> void:
 	$NormalHitbox.disabled = true
 	$RollingHitbox.disabled = true
+	died.emit()

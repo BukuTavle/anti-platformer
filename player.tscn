@@ -147,7 +147,7 @@ wait_time = 0.6
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.6
 
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

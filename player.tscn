@@ -117,7 +117,7 @@ _data = {
 size = Vector2(14, 8)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 260
+collision_mask = 268
 script = ExtResource("1_41uvr")
 metadata/_edit_group_ = true
 
@@ -149,6 +149,11 @@ one_shot = true
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.6
 
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

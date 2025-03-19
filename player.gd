@@ -13,15 +13,17 @@ signal died
 func start_game():
 	$NormalHitbox.disabled = false
 	$RollingHitbox.disabled = true #probably not needed, but just in case, you know
+	$StartTimer.start()
+	
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	$NormalHitbox.disabled = false
-	$RollingHitbox.disabled = true
-	position = $"../../PlayerSpawnPoint".position
+	start_game()
+	#position = $"../../PlayerSpawnPoint".position
 	#dead_body = $"..".get_node("DeadPlayerBody")
 	
 func _physics_process(delta: float) -> void:
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -102,3 +104,7 @@ func _on_death_timer_timeout() -> void:
 	$NormalHitbox.disabled = true
 	$RollingHitbox.disabled = true
 	died.emit()
+
+
+func _on_start_timer_timeout() -> void:
+	dead = false

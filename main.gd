@@ -1,7 +1,8 @@
 extends Node2D
 
 var player_health: int = 3
-var dead_player_body: Node
+var DeadPlayerBody: PackedScene
+var dead_player_body_instanced: Node
 signal player_damaged
 signal player_dead
 
@@ -15,9 +16,10 @@ func damage_player() -> void:
 
 func _ready() -> void:
 	DisplayServer.window_set_size(Vector2i(1440, 1080)) #Project settings -> display -> window -> window mode -> maximised if not embedded
-	dead_player_body = get_node("DeadPlayerBody")
-
-func start_game(level: int) -> void:
+	DeadPlayerBody = preload("res://dead_player_body.tscn")
+	dead_player_body_instanced = DeadPlayerBody.instantiate()
+	_on_game_restarted()
+func start_level(level: int) -> void:
 	pass
 
 func game_over() -> void:
@@ -26,7 +28,8 @@ func game_over() -> void:
 	$HUD.show_game_over()
 	await $Player.died
 	#print("død2")
-	add_child(dead_player_body)
+	add_child(dead_player_body_instanced)
+	dead_player_body_instanced.position = $Player.position 
 	$Player.hide()
 
 

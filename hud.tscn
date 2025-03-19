@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5pdc7byx8k1r"]
+[gd_scene load_steps=16 format=3 uid="uid://b5pdc7byx8k1r"]
 
 [ext_resource type="Script" uid="uid://bev4t3d4ahrwr" path="res://hud.gd" id="1_jukh5"]
 [ext_resource type="Texture2D" uid="uid://cjosroabkspkm" path="res://assets/sprites/fruit.png" id="1_n55fv"]
@@ -218,6 +218,15 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_oq5qf"]
 font = ExtResource("3_tfe74")
 
+[sub_resource type="InputEventKey" id="InputEventKey_1xsix"]
+device = -1
+pressed = true
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_rftc2"]
+events = [SubResource("InputEventKey_1xsix")]
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_jukh5")
 
@@ -270,6 +279,7 @@ vertical_alignment = 1
 offset_left = 240.0
 offset_right = 256.0
 offset_bottom = 16.0
+shortcut = SubResource("Shortcut_rftc2")
 texture_normal = ExtResource("4_1xsix")
 texture_pressed = ExtResource("5_1xsix")
 texture_hover = ExtResource("6_rftc2")

@@ -9,11 +9,14 @@ const SPEED: float = 150.0
 const JUMP_VELOCITY: float = -250.0
 const ROLL_VELOCITY: float = 250.0
 signal died
+signal game_started
 
 func start_game():
+	print("Player: start_game")
 	$NormalHitbox.disabled = false
 	$RollingHitbox.disabled = true #probably not needed, but just in case, you know
 	$StartTimer.start()
+	game_started.emit()
 	
 
 func _ready() -> void:
@@ -71,7 +74,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if dead: 
-		await start_game()
+		await game_started
+		#print("Player: process function died")
 
 
 func _on_roll_timer_timeout() -> void:
@@ -101,10 +105,11 @@ func _on_player_dead() -> void:
 
 
 func _on_death_timer_timeout() -> void:
-	$NormalHitbox.disabled = true
-	$RollingHitbox.disabled = true
+	#$NormalHitbox.disabled = true
+	#$RollingHitbox.disabled = true
 	died.emit()
 
 
 func _on_start_timer_timeout() -> void:
 	dead = false
+	#pass

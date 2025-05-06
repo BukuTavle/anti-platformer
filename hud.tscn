@@ -220,7 +220,6 @@ font = ExtResource("3_tfe74")
 
 [sub_resource type="InputEventKey" id="InputEventKey_1xsix"]
 device = -1
-pressed = true
 keycode = 82
 unicode = 114
 
@@ -279,6 +278,8 @@ vertical_alignment = 1
 offset_left = 240.0
 offset_right = 256.0
 offset_bottom = 16.0
+focus_mode = 0
+keep_pressed_outside = true
 shortcut = SubResource("Shortcut_rftc2")
 texture_normal = ExtResource("4_1xsix")
 texture_pressed = ExtResource("5_1xsix")

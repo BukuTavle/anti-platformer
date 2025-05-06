@@ -100,7 +100,7 @@ size = Vector2(18, 14)
 
 [node name="GreenSlime" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 265
+collision_mask = 257
 script = ExtResource("1_cjmfb")
 metadata/_edit_group_ = true
 
